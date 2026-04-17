@@ -2,6 +2,7 @@ import re
 from pathlib import Path
 import httpx
 from fastmcp import FastMCP
+from build_index import build as _build_index
 
 mcp = FastMCP("respond-help")
 
@@ -32,6 +33,17 @@ def fetch_help(slug: str) -> str:
         return f"Failed to fetch article: HTTP {e.response.status_code}"
     except httpx.RequestError as e:
         return f"Failed to fetch article: {str(e)}"
+
+
+@mcp.tool()
+def rebuild_index() -> str:
+    """Re-fetch the respond.io help sitemap and rebuild the local help index.
+    Takes about 30 seconds. Use when the user asks to update, refresh, or
+    rebuild the help docs, or when list_help_topics looks stale."""
+    try:
+        return _build_index()
+    except Exception as exc:
+        return f"Failed to rebuild index: {exc}"
 
 
 if __name__ == "__main__":

@@ -38,6 +38,21 @@ Claude should cite a help article by name and walk you through it.
 
 ---
 
+## What Claude can do
+
+| What you say | What happens |
+|---|---|
+| *"What does respond.io help say about lifecycle?"* | Claude searches the index and finds relevant articles |
+| *"Walk me through the connect WhatsApp article"* | Claude fetches and reads the full article |
+| *"Update the respond help docs"* | Claude rebuilds the index with the latest articles (~30 s) |
+
+These are powered by three tools Claude can call:
+- **`list_help_topics`** — reads the local index of all ~200 help articles
+- **`fetch_help`** — fetches a specific article in full from respond.io
+- **`rebuild_index`** — re-fetches the sitemap and rewrites the local index
+
+---
+
 ## Where things live
 
 | What | Where |
@@ -52,7 +67,11 @@ Claude should cite a help article by name and walk you through it.
 
 ## Refresh the help index
 
-The help index is a snapshot — it won't update itself automatically. Re-run this command in Terminal whenever you want the latest articles (once a month is usually enough):
+The help index is a snapshot — it won't update itself automatically. Once a month is usually enough.
+
+**Easy way:** Just ask Claude — *"Update the respond help docs"* — and Claude will call the rebuild tool (~30 s).
+
+**Manual way** (if Claude Code isn't open):
 
 ```sh
 cd ~/.local/share/respond-help-mcp && uv run python build_index.py
