@@ -30,7 +30,7 @@ def fetch_help(slug: str) -> str:
             return response.text
     except httpx.HTTPStatusError as e:
         return f"Failed to fetch article: HTTP {e.response.status_code}"
-    except (httpx.TimeoutException, httpx.ConnectError, Exception) as e:
+    except httpx.RequestError as e:
         return f"Failed to fetch article: {str(e)}"
 
 

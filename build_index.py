@@ -83,7 +83,11 @@ def build_index(articles_by_category: dict[str, list[dict]]) -> str:
 def main() -> None:
     with httpx.Client(follow_redirects=True, timeout=30.0) as client:
         print("Fetching sitemap…", file=sys.stderr)
-        urls = fetch_sitemap(client)
+        try:
+            urls = fetch_sitemap(client)
+        except (httpx.HTTPStatusError, httpx.RequestError) as e:
+            print(f"ERROR: Could not fetch sitemap: {e}", file=sys.stderr)
+            sys.exit(1)
         total = len(urls)
         print(f"Found {total} English articles", file=sys.stderr)
 
