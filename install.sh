@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 # install.sh — installs the Respond.io Help Docs MCP for Claude Code
-# Usage: curl -LsSf https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/respond-help-mcp/main/install.sh | sh
+# Usage: curl -LsSf https://raw.githubusercontent.com/nicholaschuah-rocketbots/respond-help-mcp/main/install.sh | sh
 
 set -e
 
 INSTALL_DIR="$HOME/.local/share/respond-help-mcp"
-REPO_URL="https://github.com/YOUR_GITHUB_USERNAME/respond-help-mcp.git"
+REPO_URL="https://github.com/nicholaschuah-rocketbots/respond-help-mcp.git"
 
 echo ""
 echo "Respond.io Help Docs MCP — Installer"

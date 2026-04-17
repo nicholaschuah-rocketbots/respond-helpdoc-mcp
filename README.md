@@ -11,7 +11,7 @@ This gives Claude Code a live index of every Respond.io help article. Once insta
 Paste this one command into Terminal and press Enter:
 
 ```sh
-curl -LsSf https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/respond-help-mcp/main/install.sh | sh
+curl -LsSf https://raw.githubusercontent.com/nicholaschuah-rocketbots/respond-help-mcp/main/install.sh | sh
 ```
 
 The script will:
