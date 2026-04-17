@@ -1,5 +1,5 @@
 [project]
-name = "respond-help-mcp"
+name = "respond-helpdoc-mcp"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [

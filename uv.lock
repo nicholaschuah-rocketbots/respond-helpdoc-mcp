@@ -994,7 +994,7 @@ wheels = [
 ]
 
 [[package]]
-name = "respond-help-mcp"
+name = "respond-helpdoc-mcp"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

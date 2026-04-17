@@ -11,12 +11,12 @@ This gives Claude Code a live index of every Respond.io help article. Once insta
 Paste this one command into Terminal and press Enter:
 
 ```sh
-curl -LsSf https://raw.githubusercontent.com/nicholaschuah-rocketbots/respond-help-mcp/main/install.sh | sh
+curl -LsSf https://raw.githubusercontent.com/nicholaschuah-rocketbots/respond-helpdoc-mcp/main/install.sh | sh
 ```
 
 The script will:
 1. Install `uv` (a Python tool) if you don't have it — takes about 10 seconds
-2. Download this project to `~/.local/share/respond-help-mcp`
+2. Download this project to `~/.local/share/respond-helpdoc-mcp`
 3. Fetch all ~200 Respond.io help articles and build a local index — takes about 30 seconds
 4. Register itself with Claude Code
 
@@ -57,11 +57,11 @@ These are powered by three tools Claude can call:
 
 | What | Where |
 |---|---|
-| Install folder | `~/.local/share/respond-help-mcp` |
-| Help index (what Claude reads) | `~/.local/share/respond-help-mcp/index.md` |
+| Install folder | `~/.local/share/respond-helpdoc-mcp` |
+| Help index (what Claude reads) | `~/.local/share/respond-helpdoc-mcp/index.md` |
 | MCP registration | `~/.claude.json` (managed automatically) |
 
-**To open the install folder in Finder:** Press `Cmd + Shift + G` in Finder, paste `~/.local/share/respond-help-mcp`, and press Enter.
+**To open the install folder in Finder:** Press `Cmd + Shift + G` in Finder, paste `~/.local/share/respond-helpdoc-mcp`, and press Enter.
 
 ---
 
@@ -74,7 +74,7 @@ The help index is a snapshot — it won't update itself automatically. Once a mo
 **Manual way** (if Claude Code isn't open):
 
 ```sh
-cd ~/.local/share/respond-help-mcp && uv run python build_index.py
+cd ~/.local/share/respond-helpdoc-mcp && uv run python build_index.py
 ```
 
 ---
@@ -85,7 +85,7 @@ Two commands in Terminal:
 
 ```sh
 claude mcp remove respond-help
-rm -rf ~/.local/share/respond-help-mcp
+rm -rf ~/.local/share/respond-helpdoc-mcp
 ```
 
 Restart Claude Code and the MCP is gone.
@@ -110,4 +110,4 @@ Restart Claude Code and the MCP is gone.
 → That's expected. A small number of help articles have formatting quirks that can't be parsed — they're skipped with a warning. The rest of the index is complete.
 
 **How do I see exactly what Claude is reading?**
-→ Open `~/.local/share/respond-help-mcp/index.md` in any text editor (TextEdit works). Each line is one help article with its description.
+→ Open `~/.local/share/respond-helpdoc-mcp/index.md` in any text editor (TextEdit works). Each line is one help article with its description.
