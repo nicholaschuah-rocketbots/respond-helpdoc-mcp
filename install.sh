@@ -119,17 +119,6 @@ else
   echo "   Unsupported OS for Claude Desktop auto-registration — skipping."
 fi
 
-# ── 7. Register with Claude Code (if installed) ───────────────────────────────
-
-if command -v claude >/dev/null 2>&1; then
-  echo "→ Registering MCP server with Claude Code..."
-  claude mcp remove respond-help --scope user 2>/dev/null || true
-  claude mcp add respond-help --scope user uv -- --directory "$INSTALL_DIR" run python server.py
-  echo "   Registered."
-else
-  echo "   Claude Code CLI not found — skipping (only Claude Desktop was set up)."
-fi
-
 # ── Done ──────────────────────────────────────────────────────────────────────
 
 cat <<EOF
