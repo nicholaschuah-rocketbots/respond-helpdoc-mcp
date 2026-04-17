@@ -67,6 +67,63 @@ Examples you can copy:
 
 ---
 
+## The three tools inside this MCP
+
+You don't need to remember these — Claude picks the right one automatically. But it helps to know what's going on, so you can ask smarter questions.
+
+### 1. `list_help_topics` — "show me the table of contents"
+
+Claude reads the **full list** of every help article, grouped by category (Integrations, Channels, Reporting, Quick Start, etc.). Each entry has a title and a one-line description. Claude uses this when it needs to figure out *which* article to go read in detail.
+
+Think of it like the index at the back of a book.
+
+### 2. `fetch_help` — "open that chapter and read it"
+
+Once Claude knows which article it wants, it calls this tool to pull down the **full text** of that article — every heading, every step, every screenshot caption.
+
+Think of it like flipping to a specific page and reading it word for word.
+
+### 3. `rebuild_index` — "go refresh the table of contents"
+
+Claude re-downloads the list of articles from respond.io. Use this when the help docs feel outdated or when a new feature launched and you want Claude to know about it. Takes ~30 seconds.
+
+See the [Keeping the help docs fresh](#keeping-the-help-docs-fresh) section for details.
+
+---
+
+## A worked example — "how does HubSpot integration work in respond.io?"
+
+Let's say you're evaluating whether respond.io can sync with your HubSpot CRM. You want to understand the **current state** of that feature before a customer call.
+
+Here's exactly what happens when you ask Claude:
+
+> **You:** *"I have a customer asking about HubSpot integration with respond.io. Pull the current help docs and summarise what respond.io supports today — what syncs, what doesn't, any setup gotchas."*
+
+**Behind the scenes:**
+
+1. **Claude calls `list_help_topics`** → gets back the full index, sees entries under the *Integrations* category like:
+   - `integrations/hubspot-integration` — Sync contacts and conversations between respond.io and HubSpot
+   - `integrations/setting-up-hubspot` — Step-by-step HubSpot connection guide
+   - (and any other HubSpot-related articles)
+
+2. **Claude calls `fetch_help`** on each relevant slug → reads the full article content.
+
+3. **Claude answers you** with a grounded summary: *"Based on the current respond.io help docs, HubSpot integration supports two-way contact sync, conversation logging as HubSpot engagements, and… One gotcha: custom properties need to be mapped manually. Source: `integrations/hubspot-integration`."*
+
+You get an answer that reflects the **actual state** of the feature as documented today — not Claude's memory from months ago.
+
+### More "find the current state" prompts you can steal
+
+- *"What channels does respond.io support right now? Check the help docs."*
+- *"Does respond.io have anything for Shopify? If yes, pull the article and tell me what it covers."*
+- *"A customer wants to know if respond.io supports Salesforce contact sync. Check the docs and give me the honest current state."*
+- *"What does the help center say about AI Agent — what can it do today vs. what's on the roadmap?"*
+- *"Show me every article in the 'Reporting' category and summarise what's covered."*
+
+Each of these will trigger Claude to actually look things up rather than guess.
+
+---
+
 ## Keeping the help docs fresh
 
 Here's the thing: this add-on stores a **snapshot** of the help center on your computer. When Respond.io publishes new help articles or updates old ones, your snapshot won't know about it until you refresh.
